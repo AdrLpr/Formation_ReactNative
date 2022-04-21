@@ -1,20 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
+import { useState } from "react"
+import Auth from './components/page/Auth/Auth';
+import Profil from './components/page/Profil/Profil';
+import HeaderMessageCard from './components/hoc/HeaderMessageCard/HeaderMessageCard';
+
+
+
 
 export default function App() {
+
+  const [user , setUser] = useState(null)
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <ScrollView style={styles.container}>
+        {user ? <Profil /> : <Auth />}
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+    backgroundColor: 'rgba(30,0,30 ,0.99)',
+
   },
+  text: {
+    color:"red",
+    fontSize:100,
+  }
 });
